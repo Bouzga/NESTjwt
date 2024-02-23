@@ -8,21 +8,22 @@ import {JwtModule} from "@nestjs/jwt";
 @Module({
     imports: [
         TypeOrmModule.forRoot({
-            type: 'mysql',
-            host: 'localhost',
-            port: 3306,
-            username: 'root',
-            password: 'rootroot',
-            database: 'yt_nest_auth',
-            entities: [User],
-            synchronize: true,
-        }),
-        TypeOrmModule.forFeature([User]),
-        JwtModule.register({
-            secret: 'secret',
-            signOptions: {expiresIn: '1d'}
-        })
+        type: 'postgres',
+        host: 'localhost',
+        port: 5432,
+        username: 'postgres',
+        password: 'root',
+        database: 'test',
+        entities: [User],
+        synchronize: true,
+      }),
+      TypeOrmModule.forFeature([User]),
+      JwtModule.register({
+        secret: 'secret',
+        signOptions: {expiresIn: '1d'}
+      })
     ],
+  
     controllers: [AppController],
     providers: [AppService],
 })
